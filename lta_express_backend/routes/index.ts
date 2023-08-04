@@ -1,7 +1,7 @@
 
   
 import express,{ Express,Request,Response, NextFunction } from "express";
-import {ExpertType} from '../src/Entitees/Types/ExpertType';
+const cors = require('cors'); 
 const  fs = require('fs');
   
 const router = express.Router();
@@ -9,11 +9,12 @@ const router = express.Router();
  
 const articles = require ('../mock/articles.json');
 const evenements = require ('../mock/evenements.json');
-const expertise = require ('../mock/expertise.json');
-const expert = require ('../mock/experts.json');
+const expertises = require ('../mock/expertises.json');
+const experts = require ('../mock/experts.json');
 
 
-
+// Use cors middleware to handle CORS
+router.use(cors());   
 
 
 
@@ -35,23 +36,32 @@ function findById(req:Request, res:Response,file:string){
       
       if (typeSearchElement && typeSearchElement[1]) {
         jsonElement=typeSearchElement[1];
-           console.log('L26 : ' + jsonElement);
+           console.log('L38 : ' + jsonElement);
 
          try {
+
+
           const jsonObject = JSON.parse('\"'+jsonElement+'\"');
-           // console.log(jsonObject);  
+          console.log("index.ts L45 :" ); 
+          console.log(jsonObject);  
+
+
 
           fs.readFile(file, 'utf8', (err:any, data:any) => {
+
             if (err) { console.error(err);
                         res.status(500).json({ error: 'Internal Server Error' });
                        return; 
-                             } 
+                      } 
                    const elements = JSON.parse(data); 
-                  console.log(elements);  
-                   const elementsArray = Object.values(elements.jsonObject);
+                   console.log("index.ts L56 : ")
+                   console.log(elements);  
+                   console.log("index.ts L59 : ")          
+                   console.log(jsonObject);
+                   const elementsArray = Object.values(elements[jsonObject]);
                    const el = elementsArray.find((element:any) => { return element.id === id; });
-                   console.log('L37 Element trouvé : '+el); 
-                   res.status(200).json(el);
+                   console.log('index.ts L62 Element trouvé : '+el); 
+                   res.status(200).json(el); 
          });
 
 
@@ -85,25 +95,25 @@ router.get('/', ( req:Request,res:Response, next:NextFunction) =>{
 /*GET Articles & Articles Id */
 router.get('/articles', (req:Request,res:Response) => {	res.status(200).json(articles)})   
 
-router.get('/articles/:id', (req:Request, res:Response) => ( findById(req, res,'articles.json') ));
+router.get('/articles/:id', (req:Request, res:Response) => ( findById(req, res,'./mock/articles.json') ));
 
 
 /*GET Expert & Expert Id */
-router.get('/expert', (req:Request,res:Response) => (	res.status(200).json(expert)))   
+router.get('/experts', (req:Request,res:Response) => (	res.status(200).json(experts)))   
  
-router.get('/expert/:id', (req:Request, res:Response) => ( findById(req, res,'./mock/experts.json') ));
+router.get('/experts/:id', (req:Request, res:Response) => ( findById(req, res,'./mock/experts.json') ));
 
 
 
 /*GET Expertise & Expertise Id */
-router.get('/expertise', (req:Request,res:Response) => {	res.status(200).json(expertise)})  
+router.get('/expertises', (req:Request,res:Response) => {	res.status(200).json(expertises)})  
 
-router.get('/expertise/:id', (req:Request, res:Response) => ( findById(req, res,'expertise.json') ));
+router.get('/expertises/:id', (req:Request, res:Response) => ( findById(req, res,'./mock/expertises.json') ));
 
 /*GET Evenements & Evenements Id */
 router.get('/evenements', (req:Request,res:Response) => {	res.status(200).json(evenements)})   
 
-router.get('/evenements/:id', (req:Request, res:Response) => ( findById(req, res,'evenements.json') ));
+router.get('/evenements/:id', (req:Request, res:Response) => ( findById(req, res,'./mock/evenements.json') ));  
 
 
   
