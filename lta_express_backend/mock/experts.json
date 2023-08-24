@@ -1,9 +1,0 @@
-{"experts":[{"id":0,"name":"Erain","firstname":"Emmanuel","address":"id_address","diplomes":["DESS en histoire de l' Art (1985)" , 
-"Licence de Droit (1988)", "Titre de commissaire priseur (1990)"], "experiences":["Commissaire Priseur depuis 33 ans"],
-"email":"e.erain@gmail.com","phoneNumber":"0200000000","photo":{"id":0,"title":"Businessman","date":"8/08/2023","description":"Illustration photo de gabarit Businessman","photo_url":"businessman.png","photo_directory":"/api/illustrations","photobinary":"null"}},
-{"id":1,"name":"Batfalse","firstname":"Albert","address":"id_address","diplomes":["DESS en histoire de l' Art (1985)" , 
-"Licence de Droit (1988)", "Titre de commissaire priseur (1990)"],"experiences":["Commissaire Priseur depuis 33 ans"],   
-"email":"a.batfalse@gmail.com","phoneNumber":"0200000000","photo":{"id":0,"title":"Businessman","date":"8/08/2023","description":"Illustration photo de gabarit Businessman","photo_url":"businessman.png","photo_directory":"/api/illustrations","photobinary":"null"}}]  
-}  
-   
-   
