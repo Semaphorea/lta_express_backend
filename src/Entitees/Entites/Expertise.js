@@ -17,19 +17,23 @@ var Expertise = /** @class */ (function () {
         this._photos = _photos;
         this._estimatedPrice = _estimatedPrice;
         this._assessment = _assessment;
-        this._id = _id;
-        this._email = _email;
-        this._articleName = _articleName;
-        this._features = _features;
-        this._defaults = _defaults;
-        this._signature = _signature;
-        this._author = _author;
-        this._creationYear = _creationYear;
-        this._firstCommercializationYear = _firstCommercializationYear;
-        this._photos = _photos;
-        this._estimatedPrice = _estimatedPrice;
-        this._assessment = _assessment;
-    }
+         }
+    Expertise.prototype.toJsonString = function () {
+        var res = "{ \"id\":\"" + this._id + "\"," +
+            "\"email\":\"" + this.email + "\"," +
+            "\"articleName\":\"" + this._articleName + "\"," +
+            "\"features\":\"" + this._features + "\"," +
+            "\"defaults\":\"" + this._defaults + "\"," +
+            "\"signature\":\"" + this._signature + "\"," +
+            "\"author\":\"" + this._author + "\"," +
+            "\"creationYear\":\"" + this._creationYear + "\"," +
+            "\"firstCommercializationYear\":\"" + this._firstCommercializationYear + "\"," +
+            "\"photos\":\"" + this._photos + "\"," +
+            "\"estimatedPrice\":\"" + this._estimatedPrice + "\"," +
+            "\"assessment\":\"" + this._assessment +
+            "\"}";
+        return res;
+    };
     Object.defineProperty(Expertise.prototype, "id", {
         get: function () {
             return this._id;

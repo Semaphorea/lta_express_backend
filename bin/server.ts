@@ -6,6 +6,13 @@
 var app = require('../app');  
 var debug = require('debug')('lta-express-backend:server');
 var http = require('http');
+const EventEmitter = require('node:events');
+
+
+
+const emitter = new EventEmitter();
+emitter.setMaxListeners(25);
+
 
 /**
  * Get port from environment and store in Express.
@@ -46,17 +53,10 @@ let router = require('../routes/index');
 
   
 
-app.use('/articles',router);
-app.use('/articles/:id',router);   
-
-
-
-
-app.use('/experts/',router);   
-app.use('/experts/:id',router);   
-//console.log(app._router.stack);     
   
-console.log(router.stack);
+  
+//console.log(router.stack);
+
 //Affichage des routes
 // app._router.stack.forEach(function(r:any){
 //   //console.log(r);

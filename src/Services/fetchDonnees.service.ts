@@ -18,17 +18,14 @@ let experts =    require ('../mock/experts.json');
  * @param donnees 
  * @param SearchParameter 
  */
- static findFromMockById(req:Request, res:Response,donnees:string){
+  findFromMockById(req:Request, res:Response,donnees:string){
    const id = parseInt(req.params.id);
-  
-  
    
    //Récupération du type d'element à chercher ex: article
- let jsonElement=donnees;
+    let jsonElement=donnees;
           
           try {
- 
-   
+    
            const jsonObject = JSON.parse('\"'+jsonElement+'\"');
            
            let elements:any;
@@ -40,9 +37,7 @@ let experts =    require ('../mock/experts.json');
                     const elementsArray = Object.values(elements[jsonObject]);
                     const el = elementsArray.find((element:any) => { return element.id === id; });
                     res.status(200).json(el);  
-          
- 
-   
+            
          } catch (error:any) {
            console.error('Error parsing JSON:', error);
          }
@@ -51,22 +46,21 @@ let experts =    require ('../mock/experts.json');
        } 
  
    
-  static findDonnees(res:Response,donnees:string){
-
+   findDonnees(res:Response,donnees:string){
     switch(donnees){
       case 'articles' : return res.status(200).json(articles); break;
       case 'evenements': return res.status(200).json(evenements);break;
       case 'experts':  return res.status(200).json(experts);break;
       case 'expertises': return res.status(200).json(expertises);break;
     }
-   ;
+     
   }
  
-   static getImage(res:Response,req:Request,apath:String):void{
+   getImage(res:Response,req:Request,apath:String):void{
      const nameImage = req.params.name;   
      const imagePath = path.join(__dirname, apath,nameImage);
-     console.log(__dirname);
-     console.log(imagePath);
+     //  console.log(__dirname);
+     //  console.log(imagePath);
     
       // Use the 'fs' module to check if the donnees exists before sending it
       fs.access(imagePath, fs.constants.F_OK, (err:any) => {

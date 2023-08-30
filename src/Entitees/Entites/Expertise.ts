@@ -6,8 +6,8 @@ export class Expertise {
 
 
     
-    constructor(private _id:number| null,
-                private _email: string | null,
+    constructor(private _id:number|null,
+                private _email: string | null, 
                 private _articleName : string |null,
                 private _features: string | null ,
                 private _defaults: string | null ,
@@ -36,7 +36,25 @@ export class Expertise {
 }
 
 
+public toJsonString(){    
 
+   let res="{ \"id\":\""+ this._id+"\","+
+     "\"email\":\""+ this.email+"\","+
+     "\"articleName\":\""+ this._articleName+"\","+
+     "\"features\":\""+ this._features+"\","+
+     "\"defaults\":\""+ this._defaults+"\","+
+     "\"signature\":\""+ this._signature+"\","+
+     "\"author\":\""+ this._author+"\","+
+     "\"creationYear\":\""+ this._creationYear+"\","+
+     "\"firstCommercializationYear\":\""+ this._firstCommercializationYear+"\","+
+     "\"photos\":\""+ this._photos+"\","+
+     "\"estimatedPrice\":\""+ this._estimatedPrice+"\","+
+     "\"assessment\":\""+ this._assessment+       
+    "\"}";
+
+
+    return res;
+}
 
 public get id(): number | null {
     return this._id;
