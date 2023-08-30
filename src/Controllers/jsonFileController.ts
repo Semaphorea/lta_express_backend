@@ -60,7 +60,7 @@ updateItem(id:any,parametre:string,value:string){
 
  async getLastId(){
 
-    let fileblob=await this.readFileBlob(this.fileName);  
+    let fileblob=fs.readFileSync(this.fileName);  
     let jsonObject= JSON.parse( fileblob.toString());   
     let searchElement=this.typeElementJson;
     console.log(jsonObject[searchElement]);  
@@ -87,19 +87,7 @@ readFile(file:File):any{
         .catch((err:any) => { console.log("Read Error: " +err);});
 }
 
-async readFileBlob(fileName:string):Promise<File>{ 
-   const fileP= fs.readFileSync(fileName);
-//    .then((response:any )=> response.blob())
-//    .then((blob:any) => {
-//     let  filePart= new File([blob], fileName);  
-    
-//    return  this.readFile(filePart);
-//    }).error((error:any)=> {return error;}    
-   
-//    );
- return fileP;
 
-}  
 
 writeEndFile(file:File,jsonData:JSON):Boolean|any{
     console.log("jsonFileController L82 : "+jsonData);  
