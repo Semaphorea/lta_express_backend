@@ -1,7 +1,11 @@
 import {Request,Response} from 'express';
 import fs from 'fs';
 import { FetchDonnees } from '../src/Services/fetchDonnees.service';
-import { PersistDonnees } from '../src/Services/persistDonnees.service';
+import { ExpertiseController } from '../src/Controllers/expertiseController';
+import { Expertise } from '../src/Entitees/Entites/Expertise';
+import { ParsedQs } from 'qs';
+
+//import { resolve } from 'path';
 const bodyParser = require('body-parser');
 var express = require('express');
 var router = express.Router();
@@ -15,7 +19,7 @@ router.get('/', function(req:Request, res:Response, next:any) {
 });
 
 const fetchDonnees= new FetchDonnees();
-const persistDonnees= new PersistDonnees();
+
 
 /*GET Articles & Articles Id */ 
   router.get('/articles', (req:Request,res:Response) => { 	
@@ -49,33 +53,58 @@ const persistDonnees= new PersistDonnees();
     accesDonnees=="mock" ?   fetchDonnees.findFromMockById(req, res,'expertises') :  'bdd' ;
   });  
 
-  router.post('/expertise/submit-form', (req:Request,res:Response) => {
+  /*POST Expertise */
+  router.post('/expertise/submit-form', async(req:Request,res:Response) => {
+    let ret:Boolean=false;
+
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
  
     //console.log("index.ts L58 :"+req.header('content')); 
+    let requestValue:any=req.query;
+
+     if(requestValue==undefined){requestValue=null;}
+       let expertiseController=new ExpertiseController();
+
+       //let ex=expertiseController.main(req.query);    
+       let ex=expertiseController.setRequestExpertise(req.query);    
+   
+      // console.log(ex);
+       let promise:Promise<Boolean> = expertiseController.persist(accesDonnees);
+       promise.then((rea)=>{ret=rea;res.status(200).json("{\""+ret+"\"}");})  ;  
+      
+       }              
+    )     
+  
+
+  //  router.post('/expertise/submit-form', async(req:Request,res:Response) => {
+  //   let ret=false;
+
+  //   res.setHeader('Access-Control-Allow-Origin', '*');
+  //   res.setHeader('Access-Control-Allow-Methods', 'POST');
+  //   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+ 
+  //   //console.log("index.ts L58 :"+req.header('content')); 
      
+  //   if (accesDonnees=="mock" ){(ret=await persistDonnees.persist(req.query,accesDonnees)
+  //                                                   .then(()=>{return true;})
+  //                                                   .catch((err:any)=>{console.error("Route : /expertise/submit-form - Request failed to post datas !");return false;})
+  //      )}
+  //  else {  'bdd' ;} 
    
-    let ret=false; 
-  
-    accesDonnees=="mock" ?( ()=>{persistDonnees.persist(req.query,accesDonnees).then(()=>{ret= true;})})():  'bdd' ; 
-   
-    res.status(200).json("{\'"+ret+"\'}"); }         
-   )  
-  
+  //   res.status(200).json("{\""+ret+"\"}"); }         
+  //  )  
 
 
-
-
-   router.get('/expertise/submit-form', (req:Request,res:Response) => {
+   router.get('/expertise/delete', (req:Request,res:Response) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'POST');
+    res.setHeader('Access-Control-Allow-Methods', 'GET');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');   
     
-    console.log(req.body); 
+  
     let ret=false;
-    accesDonnees=="mock" ?  persistDonnees.persist(req.body,accesDonnees) :  'bdd' ; 
+   // accesDonnees=="mock" ?  persistDonnees.persist(req.body,accesDonnees) :  'bdd' ; 
    
     res.status(200).json("{\'"+ret+"\'}"); }      
    )  

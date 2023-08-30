@@ -9,13 +9,27 @@ const path =  require('path');
 
 export class PersistDonnees{
 
+    private _typeElementJson?: string;
+    private _file: any;
+  
+   
+    constructor(...args:any){
+       let nbargs:Number=args.length;
+       switch(nbargs){
+        case 0: ()=>{} ; break;
+        case 1: (typeElementJson:string)=>{this._typeElementJson=typeElementJson};break;
+        case 2: (typeElementJson:string, file:any)=>{this._file=file,this._typeElementJson=typeElementJson};break;
+       }
+
+    }
+
 
 
 async persist(datas:any,mode:string):Promise<any>{
 
     
     let res:boolean= false;    
-    let filecontroller=new JsonFileController(expertises,'expertise'); 
+    let filecontroller=new JsonFileController(this.file,'expertise'); 
     
     
         
@@ -29,11 +43,11 @@ async persist(datas:any,mode:string):Promise<any>{
 
          if(mode ==='mock'){
            
-            let torecord = expertise.toJsonString();
-            console.log("persistDonnees.service L35"+mode);
-            console.log(torecord);    
-            return filecontroller.writeEndFile(filecontroller.file,JSON.parse(torecord));   
-        }
+            let toRecord = expertise.toJsonString();
+            // console.log("persistDonnees.service L35"+mode);
+            // console.log(torecord);    
+            return filecontroller.writeEndFile(filecontroller.file,JSON.parse(toRecord));   
+        }  
          else if (mode === 'bdd'){console.log("persistDonnees.service L26 : Persistance en BDD"); return true;}
          else{console.error("persistDonnees.service L26 : Your Datas have not been saved !");return false;}
 
@@ -44,6 +58,18 @@ async persist(datas:any,mode:string):Promise<any>{
     return res;
 }
 
+public get file(): any {
+    return this._file;
+}
+public set file(value: any) {
+    this._file = value;
+}
+public get typeElementJson(): string|undefined {
+    return this._typeElementJson;
+}
+public set typeElementJson(value: string) {
+    this._typeElementJson = value;
+}
 
 
 }

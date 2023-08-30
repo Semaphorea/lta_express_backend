@@ -63,13 +63,13 @@ updateItem(id:any,parametre:string,value:string){
     let fileblob=fs.readFileSync(this.fileName);  
     let jsonObject= JSON.parse( fileblob.toString());   
     let searchElement=this.typeElementJson;
-    console.log(jsonObject[searchElement]);  
+    //console.log(jsonObject[searchElement]);  
     const nbElement= jsonObject[searchElement].length; 
     const lastElement=jsonObject[searchElement][nbElement-1]; 
-    console.log("jsonFileController L81 : "); 
-    console.log(lastElement);
+    //console.log("jsonFileController L81 : "); 
+    //console.log(lastElement);
     const lastid=Number.parseInt(lastElement.id);  
-    console.log(lastid);
+    //console.log(lastid);
     return lastid ; 
   }
 
@@ -90,18 +90,15 @@ readFile(file:File):any{
 
 
 writeEndFile(file:File,jsonData:JSON):Boolean|any{
-    console.log("jsonFileController L82 : "+jsonData);  
+    console.log("jsonFileController L93 : "+JSON.stringify(jsonData));  
 
     let filename=this.fileName;
-    console.log(filename);
+  
         const fsPromises = fs.promises;
         fsPromises.readFile(filename, 'utf8') 
             .then((data:any) => { 
 
                 let json = JSON.parse(data);
-                // console.log('jsonFileControler L114 : '+JSON.stringify(json)); 
-                // console.log(json.expertise);
-
                     json[this._typeElementJson].push(jsonData);    
 
                return fsPromises.writeFile(filename, JSON.stringify(json))

@@ -17,7 +17,8 @@ var Expertise = /** @class */ (function () {
         this._photos = _photos;
         this._estimatedPrice = _estimatedPrice;
         this._assessment = _assessment;
-         }
+      
+    }
     Expertise.prototype.toJsonString = function () {
         var res = "{ \"id\":\"" + this._id + "\"," +
             "\"email\":\"" + this.email + "\"," +
