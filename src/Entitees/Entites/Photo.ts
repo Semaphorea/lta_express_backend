@@ -9,7 +9,7 @@ export  class Photo implements  PhotoType {
     public description: string | null;
     public photo_url: string | null;
     public photo_directory: string | null;
-    public photoBase: string | null;
+   
 
     public constructor(       
         id: number | null,
@@ -18,7 +18,7 @@ export  class Photo implements  PhotoType {
         description: string | null,
         photo_url: string | null,
         photo_directory: string | null,
-        photoBase: string | null,) {
+      ) {
 
    
         this.id = id;
@@ -27,7 +27,7 @@ export  class Photo implements  PhotoType {
         this.description = description;
         this.photo_url = photo_url;
         this.photo_directory = photo_directory;
-        this.photoBase = photoBase;
+
     }
 
 
@@ -37,8 +37,8 @@ export  class Photo implements  PhotoType {
     getDescription(){return this.description;}
     getURL(){return this.photo_url;}
     getDirectory(){return this.photo_directory;}
-    getphotoBase64(){return this.photoBase;}
- 
+
+  
     public clone(): Photo {
           return new Photo(
             this.id,
@@ -46,8 +46,8 @@ export  class Photo implements  PhotoType {
             this.date,
             this.description,
             this.photo_url,
-            this.photo_directory,
-            this.photoBase 
+            this.photo_directory
+         
           );
         }
             

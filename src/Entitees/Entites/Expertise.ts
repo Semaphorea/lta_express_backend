@@ -37,9 +37,9 @@ export class Expertise {
 
 
 public toJsonString(){    
-
-   let res="{ \"id\":\""+ this._id+"\","+
-     "\"email\":\""+ this.email+"\","+
+    const photos = this._photos?.map((photo) => {console.log('Expertise L40 ',photo);JSON.stringify(photo)});
+   let res="{ \"id\":\""+ this._id+"\","+ 
+     "\"email\":\""+ this._email+"\","+
      "\"articleName\":\""+ this._articleName+"\","+
      "\"features\":\""+ this._features+"\","+
      "\"defaults\":\""+ this._defaults+"\","+
@@ -47,7 +47,7 @@ public toJsonString(){
      "\"author\":\""+ this._author+"\","+
      "\"creationYear\":\""+ this._creationYear+"\","+
      "\"firstCommercializationYear\":\""+ this._firstCommercializationYear+"\","+
-     "\"photos\":\""+ this._photos+"\","+
+     "\"photos\":\""+photos+"\","+  
      "\"estimatedPrice\":\""+ this._estimatedPrice+"\","+
      "\"assessment\":\""+ this._assessment+       
     "\"}";
@@ -136,8 +136,8 @@ public set features(value: string | null) {
 }
 
 public set expertise(value:Expertise){  //attribution d'id à partir d'object Expertise
-    this.id=value.id;  //Le code compile avec l'erreur
+    this._id=value.id;  //Le code compile avec l'erreur
 
 
 }  
-}
+}  

@@ -1,5 +1,5 @@
 
-import { PersistDonnees } from '../Services/persistDonnees.service'
+import { ManageDonnees } from '../Services/manageDonnees.service'
 import {Expertise } from "../Entitees/Entites/Expertise";
 import QueryString from 'qs';
 import  querystring from "querystring";
@@ -17,9 +17,13 @@ public _expertise?:Expertise;
     }
     
   }
+    public deleteExpertise(typePersistance:string,id:Number):Boolean{
+      let manageDonnees=new ManageDonnees();
+      manageDonnees.instantiateProperties('expertises'); 
+      return  manageDonnees.delete(id); 
+    }
 
-
-  public main (){}  
+    public main (){}  
 
 
     public processExpertise(){}
@@ -27,26 +31,36 @@ public _expertise?:Expertise;
   
     public async persist(typePersistance:string){
       
-          let persistDonnees=new PersistDonnees();
-            let ret=await persistDonnees.persist(this._expertise,typePersistance)
+          let manageDonnees=new ManageDonnees('expertises');
+          console.log("expertiseController L35",this.expertise);
+            let ret=await manageDonnees.persist(this.expertise,typePersistance)
                                                     .then(()=>{return true;})
                                                     .catch((err:any)=>{console.error("Route : /expertise/submit-form - Request failed to post requestValue !");return false;})
               return ret;                
     }
                                
+   public async update(typePersistance:string){
+          return this.persist(typePersistance);
 
-
+   }
+   
 
     public fetchExpertiseDB(){}
 
+    public fetchLastId(typePersistance:string):Number{
+      let manageDonnees=new ManageDonnees('expertises'); 
+      let ret= manageDonnees.getLastId(typePersistance);
+      return ret;
+    }
 
-
-    public setRequestExpertise (requestValue: any){
-
-      let expert= new Expertise(null, requestValue?.email,requestValue?.articleName,requestValue?.features, requestValue?.defaults, requestValue?.signature, 
-             requestValue?.author, requestValue?.creationYear, requestValue?.firstCommercializationYear, requestValue?.photos, requestValue?.estimatedPrice, requestValue?.assessment);
-             this.expertise=expert;          
-             return expert; 
+    public setRequestExpertise(requestValue: any){
+      console.log('expertiseController 57 : ',requestValue);   
+      let expertise= new Expertise(requestValue._id, requestValue._email,requestValue._articleName,requestValue._features, requestValue._defaults, requestValue._signature, 
+        requestValue._author, requestValue._creationYear, requestValue._firstCommercializationYear, requestValue._photos, requestValue._estimatedPrice, requestValue._assessment);
+        this._expertise=expertise;      
+        
+        console.log('expertiseController 61 : ',this._expertise);   
+             return expertise; 
      }
 
 
