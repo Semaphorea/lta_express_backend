@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "partocle",
+    "password": "ee27083beb1b08943fe97ab2afbc2628a64512cac968196de3006d6f16185c8a",
+    "database": "latekantique_developement",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "partocle",
+    "password": "ee27083beb1b08943fe97ab2afbc2628a64512cac968196de3006d6f16185c8a",
+    "database": "latekantique_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "partocle",
+    "password": "ee27083beb1b08943fe97ab2afbc2628a64512cac968196de3006d6f16185c8a",
+    "database": "latekantique_production",  
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
