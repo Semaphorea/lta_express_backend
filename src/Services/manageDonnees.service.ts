@@ -9,7 +9,7 @@ let articles =   require ('../mock/articles.json');
 let evenements = require ('../mock/evenements.json');
 let expertises = require ('../mock/expertises.json');
 let experts =    require ('../mock/experts.json');
-
+ 
 export class ManageDonnees{
 
     private _typeElementJson?: string;
@@ -120,7 +120,7 @@ async persist(datas:any,mode:string):Promise<any>{
                 console.log("manageDonnees.service L120 ",mode);
                 console.log("manageDonnees.service L121",datas);
                 
-                //Remplacement des key de l'objet pour ne pas avoir '_'
+                //Remplacement des key de l'objet pour ne pas avoir '_' dans le fichier.
                
                 const newDatas :any= {};
                 for (let key in datas) {

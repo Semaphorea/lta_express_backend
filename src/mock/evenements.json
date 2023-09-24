@@ -1,19 +1,32 @@
 {"evenements":[
   { 
     "id": 1,   
-    "title": "Machine Anticithere",      
-    "date" : ["1966,6,13","1966,6,17"] ,
-    "description" : "Object considéré comme étant le premier calculateur de l'histoire. Permettant de calculer la position des astres.",
+    "title": "Minitel de première génération",      
+    "date" : ["2023,8,15","1966,6,17"] ,
+    "description" : "Une série de 3 minitels utilisés par les 55 premiers utilisateurs en France (à St Malo) du service d'annuaire électronique sont disponibles dès à présent !",
     "photo_url": "/api/assets/Images/Photos/machine-anticythere.jpg" 
     
-   },
+   },  
 
    { 
     "id": 2,   
-    "title": "Machine Anticithere",     
-    "date" : ["1966,6,13","1966,6,17"] ,
-    "description" : "Object considéré comme étant le premier calculateur de l'histoire. Permettant de calculer la position des astres.",
+    "title": "La Magnavox Odyssey",     
+    "date" : ["2024,1,1","1966,6,17"] ,
+    "description" : "La console Magnavo Odyssey sera bientôt disponible sur notre site à partir de Janvier 2024.",
     "photo_url": "/api/assets/Images/Photos/machine-anticythere.jpg"  
- }
- 
+ },
+ { 
+  "id": 3,   
+  "title": "Machine Anticithere",     
+  "date" : ["1966,6,13","1966,6,17"] ,
+  "description" : "Object considéré comme étant le premier calculateur de l'histoire. Permettant de calculer la position des astres.",
+  "photo_url": "/api/assets/Images/Photos/machine-anticythere.jpg"  
+},
+{ 
+  "id": 4,   
+  "title": "Retour aux Sources des claviers numériques",     
+  "date" : ["2023,8,24","1966,6,17"] ,
+  "description" : "Nous vous avons déniché le Yamaha SY-1, clavier d'une importance capitale pour la firme Yamaha puisqu'il est à l'origine d'une très longue lignée de synthétiseurs.",
+  "photo_url": "/api/assets/Images/Photos/machine-anticythere.jpg"  
+}
 ]}

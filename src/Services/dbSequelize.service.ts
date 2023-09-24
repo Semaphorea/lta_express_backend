@@ -6,8 +6,7 @@ export class dbSequelize{
     private _connexion: Sequelize;
   
      public constructor(){
-       
-        this._connexion=new Sequelize(dataBaseConf.db, dataBaseConf.identifiant,dataBaseConf.password,{dialect:"mysql", host:dataBaseConf.host});
+               this._connexion=new Sequelize(dataBaseConf.db, dataBaseConf.identifiant,dataBaseConf.password,{dialect:"mysql", host:dataBaseConf.host});
      }
 
 
