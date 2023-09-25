@@ -11,7 +11,8 @@
 /bazel-out
 
 # Node
-/node_modules
+node_modules
+/node_modules/*
 /lta_express_backend/node_modules
 /lta_server/node_modules
 npm-debug.log
