@@ -5,7 +5,8 @@ export type ArticleType = {
      description: string | null;
      url: string | null;              //Photo url
      availableUnits: number | null;
+     quantity:number|null,
      year: number | null; 
      price: number | null;
-
+ 
 }  

@@ -5,7 +5,6 @@ export  type PhotoType = {
      date: Date | null;
      description: string | null;
      photo_url: string | null;
-     photo_directory: string | null;
-     photoBase: string | null;   
+     photo_directory: string | null;  
 
 } 

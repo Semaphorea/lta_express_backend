@@ -2,17 +2,17 @@ import { PhotoType } from "./PhotoType";
 
 export type ExpertiseType = {
     
-     id: number | null ,
-     client : string |null,
-     articleName : string |null,
-     features : string  | null ,
-     defaults : string | null ,  
-     signature : string  | null  ,
-     author : string | null ,  
-     creationYear : Date | null , 
-     firstCommercializationYear : Date | null ,
-     photos : PhotoType[] | null ,  //6 photos
-     estimatedPrice : string | null ,
+     id: number | null ;
+     client : string |null;
+     articleName : string |null;
+     features : string  | null ;
+     defaults : string | null ;  
+     signature : string  | null  ;
+     author : string | null ;  
+     creationYear : Date | null ; 
+     firstCommercializationYear : Date | null ;
+     photos : PhotoType[] | null ;  //6 photos
+     estimatedPrice : string | null ;
      assessment : string | null    
 
  

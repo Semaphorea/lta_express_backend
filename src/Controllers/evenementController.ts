@@ -1,12 +1,11 @@
 
-import {Evenement } from "../Entitees/Entites/Evenement";
+import {Evenement } from "../Entitees/Entites/Evenement.ts";
 
 export class EvenementController{
 
-public Evenement:Evenement|null= null;
+public Evenement:Evenement|null= null; 
     
-    public main(){}
-
+   
     public processEvenement(){}
     public persist(){}
     public fetchEvenementDB(){}

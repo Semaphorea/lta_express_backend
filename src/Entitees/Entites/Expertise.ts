@@ -1,11 +1,8 @@
-import { Photo } from "./Photo";
+import { Photo } from "./Photo.ts";
 
-export class Expertise {
+export class Expertise { 
    
   
-
-
-    
     constructor(private _id ?:number|null|undefined,
                 private _email ?: string | null|undefined, 
                 private _articleName ?: string |null|undefined,

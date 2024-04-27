@@ -1,7 +1,7 @@
 import {Sequelize} from 'sequelize';
-import { dataBaseConf } from '../../Configuration/Environnement/environnement';
+import { dataBaseConf } from '../../Configuration/Environnement/environnement.ts';
 
-export class dbSequelize{
+export class dbSequelize{  
 
     private _connexion: Sequelize;
   

@@ -1,7 +1,7 @@
-import { dataBaseConf } from '../../Configuration/Environnement/environnement';
-const mysql = require('mysql2');
+import { dataBaseConf } from '../../Configuration/Environnement/environnement.ts';
+import mysql from 'mysql2';
 
-
+  
 
 class DataBaseService{
  private _connection:any =null;

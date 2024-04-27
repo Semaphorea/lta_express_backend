@@ -1,5 +1,5 @@
 
-import { PhotoType } from '../Types/PhotoType';
+import { PhotoType } from '../Types/PhotoType.ts';
 
 
 export  class Photo implements  PhotoType { 
@@ -19,16 +19,15 @@ export  class Photo implements  PhotoType {
         photo_url: string | null,
         photo_directory: string | null,
       ) {
-
    
         this.id = id;
         this.title = title;
         date ? this.date = new Date(date): this.date=null;
         this.description = description;
-        this.photo_url = photo_url;
-        this.photo_directory = photo_directory;
-
+        this.photo_url = photo_url;  
+        this.photo_directory = photo_directory; 
     }
+
 
 
     getId(){return this.id;}
